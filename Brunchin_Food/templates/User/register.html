@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="container user_login_container">
+    <div class=" register_container">
+      <form action="/user_register" method="post">
+      <div class="form-group">
+        {% csrf_token %}
+        <h1> SIGN UP</h1>
+        {% if errmsg%}
+         <div class="alert alert-danger">{{errmsg}}</div>
+         {% endif %}
+        <label for="email">User Name:</label>
+        <input type="text" name="uname" class="form-control" id="user">
+      </div>
+      <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" name="uemail" class="form-control" id="email">
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password"  name="upswd" class="form-control" id="pwd">
+      </div>
+      <div class="form-group">
+      <button type="submit" class="btn btn-default register_button">Register</button>
+       </div>
+  <div class="form-group">
+    <hr class="mt-5 mb-4 border-secondary-subtle">
+    <p class="m-0 text-secondary text-end">Already have an account? <a href="#!" class="link-primary text-decoration-none">Sign in</a></p>
+  </div>
+</div>
+  </div>
+</form>
+
+  {% endblock %}

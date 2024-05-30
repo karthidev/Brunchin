@@ -1,0 +1,54 @@
+
+{% include 'Brunchin_header.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+  {% block content %} 
+ <section>
+
+
+  <div class="container">
+    <div class="row gx-5 veg_nonvegFilter">
+    <div class="form-group">
+      <select class="cls_nonvegfilters" aria-label="Default select example">
+        <option selected>Filter By Food</option>
+        <option value="Veg" >Veg</option>
+        <option value="Non veg">Non Veg</option>
+      </select>
+    </div>
+    </div>
+
+    <div class="row cls_footcats">
+       {% for x in context %} 
+  <div class="col col-sm-3 food_items d-flex justify-content-center">
+    <div class="col">
+  <div class="card" style="width:300px">
+  <img class="card-img-top food_img" src="{% static  x.food_img %}" alt="Card image" width="200px" height="200px">
+  <h6 class="card-title">{{x.food_name}}</h6>
+  <h6 class="card-title">₹{{x.food_price}}</h6>
+  </div>
+  
+  <div class="col">
+  <p class="card-text">{{x.food_restaurant}}</p>
+   </div>
+
+  <div class="col">
+  <!-- <span class="card-text">Price</span> ₹{{x.food_price}}</a>  -->
+  <a href="{% url 'add_tocart' x.id %}" class="btn btn-danger cls_addcart">Add</a>
+  </div>
+</div>
+</div>
+   {%  endfor  %} 
+</div>
+</section>
+{% endblock %}
+
+</body>
+</html>
+{% include 'Brunchin_Footer.html' %}
